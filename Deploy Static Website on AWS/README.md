@@ -8,6 +8,7 @@ The cloud is perfect for hosting static websites that only include HTML, CSS, an
 *   Accessing the cached website pages using CloudFront content delivery network (CDN) service. Recall that CloudFront offers low latency and high transfer speeds during website rendering.
 <br>
 <br>
+
 ### In this project, we will deploy a static website to AWS by performing the following steps:
 
 1.  create a public S3 bucket and upload the website files to your bucket.
