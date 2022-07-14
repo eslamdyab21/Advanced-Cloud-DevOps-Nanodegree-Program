@@ -88,4 +88,7 @@ The cloud is perfect for hosting static websites that only include HTML, CSS, an
 
 [![](Deploy%20Static%20Website%20on%20AWS%206d50023531c2454d89058da199e46f0f/Untitled%206.png)](Deploy%20Static%20Website%20on%20AWS%206d50023531c2454d89058da199e46f0f/Untitled%206.png)
 
+*   Here is the S3 static website bucket url: [my-2031830-bucket-for-website-project.s3-website-us-east-1.amazonaws.com](http://my-2031830-bucket-for-website-project.s3-website-us-east-1.amazonaws.com/)
+*   And the CloudFront Domain Name URL: [dxxhqmwfvogk9.cloudfront.net](https://dxxhqmwfvogk9.cloudfront.net/)  
+  
 [![](Deploy%20Static%20Website%20on%20AWS%206d50023531c2454d89058da199e46f0f/Untitled%207.png)](Deploy%20Static%20Website%20on%20AWS%206d50023531c2454d89058da199e46f0f/Untitled%207.png)
