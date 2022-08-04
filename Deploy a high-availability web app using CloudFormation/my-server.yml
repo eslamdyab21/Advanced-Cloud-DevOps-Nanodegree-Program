@@ -7,6 +7,12 @@ Parameters:
     Description: An environment name that will be prefixed to resource names
     Type: String
 
+  HomeIP: 
+    Description: my changing ip
+    Type: String
+    Default: ''
+    
+
 
 Resources:
   LBSecGroup:
@@ -27,4 +33,30 @@ Resources:
       - IpProtocol: tcp
         FromPort: 80
         ToPort: 80
+        CidrIp: 0.0.0.0/0
+  
+
+  ServerSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow http to our hosts and SSH from home ip only
+      VpcId:
+        Fn::ImportValue:
+          !Sub "${EnvironmentName}-VPCID"
+
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: !Ref HomeIP
+
+      SecurityGroupEgress:
+      - IpProtocol: tcp
+        FromPort: 0
+        ToPort: 65535
         CidrIp: 0.0.0.0/0

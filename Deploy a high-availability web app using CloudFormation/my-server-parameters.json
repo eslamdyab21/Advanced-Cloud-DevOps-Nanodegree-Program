@@ -1,6 +1,10 @@
 [
-	{
-		"ParameterKey": "EnvironmentName",
-		"ParameterValue": "UdagramUdacityProject"
-	}
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "UdagramUdacityProject"
+    },
+    {
+        "ParameterKey": "HomeIP",
+        "ParameterValue": "41.236.144.35/32"
+    }
 ]
