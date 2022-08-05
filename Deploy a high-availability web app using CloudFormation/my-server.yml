@@ -92,61 +92,61 @@ Resources:
       LaunchConfigurationName:
         Ref: WebAppLaunchConfig
       MinSize: '1'
-      MaxSize: '1'
+      MaxSize: '4'
       TargetGroupARNs:
       - Ref: WebAppTargetGroup
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #++++++++++++++++++++++++++++++++++ uncomment to use JampBox ++++++++++++++++++++++++++++++
-  JambBoxServerSecGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: Allow http to our hosts and SSH from home ip only
-      VpcId:
-        Fn::ImportValue:
-          !Sub "${EnvironmentName}-VPCID"
+  # JambBoxServerSecGroup:
+  #   Type: AWS::EC2::SecurityGroup
+  #   Properties:
+  #     GroupDescription: Allow http to our hosts and SSH from home ip only
+  #     VpcId:
+  #       Fn::ImportValue:
+  #         !Sub "${EnvironmentName}-VPCID"
 
-      SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 80
-        ToPort: 80
-        CidrIp: 0.0.0.0/0
+  #     SecurityGroupIngress:
+  #     - IpProtocol: tcp
+  #       FromPort: 80
+  #       ToPort: 80
+  #       CidrIp: 0.0.0.0/0
 
-      - IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: !Ref HomeIP
+  #     - IpProtocol: tcp
+  #       FromPort: 22
+  #       ToPort: 22
+  #       CidrIp: !Ref HomeIP
 
-      SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: 0
-        ToPort: 65535
-        CidrIp: 0.0.0.0/0
+  #     SecurityGroupEgress:
+  #     - IpProtocol: tcp
+  #       FromPort: 0
+  #       ToPort: 65535
+  #       CidrIp: 0.0.0.0/0
 
-  JampBoxAppLaunchConfig:
-    Type: AWS::AutoScaling::LaunchConfiguration
-    Properties:       
-      ImageId: ami-0729e439b6769d6ab
-      # ToDo: Change the key-pair name, as applicable to you. 
-      KeyName: jumpbox-key
-      SecurityGroups:
-      - Ref: JambBoxServerSecGroup
-      InstanceType: t2.micro
-      BlockDeviceMappings:
-      - DeviceName: "/dev/sdk"
-        Ebs:
-          VolumeSize: '10'
+  # JampBoxAppLaunchConfig:
+  #   Type: AWS::AutoScaling::LaunchConfiguration
+  #   Properties:       
+  #     ImageId: ami-0729e439b6769d6ab
+  #     # ToDo: Change the key-pair name, as applicable to you. 
+  #     KeyName: jumpbox-key
+  #     SecurityGroups:
+  #     - Ref: JambBoxServerSecGroup
+  #     InstanceType: t2.micro
+  #     BlockDeviceMappings:
+  #     - DeviceName: "/dev/sdk"
+  #       Ebs:
+  #         VolumeSize: '10'
 
-  JambBoxAutoScalingGroup:
-    Type: AWS::AutoScaling::AutoScalingGroup
-    Properties:
-      VPCZoneIdentifier:
-      - Fn::ImportValue: 
-          !Sub "${EnvironmentName}-PUB-NETS"
-      LaunchConfigurationName:
-        Ref: JampBoxAppLaunchConfig
-      MinSize: '1'
-      MaxSize: '1'
+  # JambBoxAutoScalingGroup:
+  #   Type: AWS::AutoScaling::AutoScalingGroup
+  #   Properties:
+  #     VPCZoneIdentifier:
+  #     - Fn::ImportValue: 
+  #         !Sub "${EnvironmentName}-PUB-NETS"
+  #     LaunchConfigurationName:
+  #       Ref: JampBoxAppLaunchConfig
+  #     MinSize: '1'
+  #     MaxSize: '1'
 #++++++++++++++++++++++++++++++++++ uncomment to use JampBox ++++++++++++++++++++++++++++++
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -197,3 +197,11 @@ Resources:
       VpcId: 
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
+
+
+Outputs: 
+  LoadBalancerDNS: 
+    Description: LoadBalancer DNS
+    Value: !GetAtt WebAppLB.DNSName
+    Export:
+      Name: !Sub ${EnvironmentName}-LoadBalancerDNS
