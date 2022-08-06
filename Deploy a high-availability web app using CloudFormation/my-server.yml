@@ -50,10 +50,12 @@ Resources:
         ToPort: 80
         CidrIp: 0.0.0.0/0
 
-      - IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: 0.0.0.0/0
+      #+++++++++++++++++++++++++ uncomment to have ssh access from jumpbox +++++++++++++++++++++++++++++++#
+      # - IpProtocol: tcp
+      #   FromPort: 22
+      #   ToPort: 22
+      #   CidrIp: 0.0.0.0/0
+      #+++++++++++++++++++++++++ uncomment to have ssh access from jumpbox +++++++++++++++++++++++++++++++#
 
       SecurityGroupEgress:
       - IpProtocol: tcp
