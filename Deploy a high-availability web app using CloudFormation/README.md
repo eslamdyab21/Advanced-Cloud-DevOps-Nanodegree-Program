@@ -71,7 +71,8 @@ would be on a Public Subnet with `port 22` open only to your home `IP address`, 
 
 ![Untitled](Deploy%20a%20high-availability%20web%20app%20using%20CloudForm%2078bbf1993ed346e5a9222cee72afbc95/Untitled.png)
 <br/>
+
 ## The load balance running on this URL:
-[Udagr-WebAp-5Y2066105Y3P-92021571.us-east-1.elb.amazonaws.com](Udagr-WebAp-5Y2066105Y3P-92021571.us-east-1.elb.amazonaws.com)
+[Udagr-WebAp-1DUGL1NG0WO25-763462357.us-east-1.elb.amazonaws.com](Udagr-WebAp-1DUGL1NG0WO25-763462357.us-east-1.elb.amazonaws.com)
 
 ![Untitled](Deploy%20a%20high-availability%20web%20app%20using%20CloudForm%2078bbf1993ed346e5a9222cee72afbc95/Untitled%201.png)
