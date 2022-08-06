@@ -78,6 +78,7 @@ Resources:
       # ToDo: AMI ID of Ubuntu Linux machine. Too get one, try creating a VM from the web console. 
       ImageId: ami-0729e439b6769d6ab
       # ToDo: Change the key-pair name, as applicable to you. 
+      #KeyName: private-server-devops-key
       SecurityGroups:
       - Ref: ServerSecGroup
       InstanceType: t2.medium
